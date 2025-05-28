@@ -1,0 +1,87 @@
+
+.search,.add-btn, .upt{
+ 
+  display: flex;
+  gap: 10px;
+  font-family: Arial;
+  font-weight: bold;
+  max-width: 400px;
+  margin:auto;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.search label {
+  border:1px solid black;
+  cursor: pointer;
+   padding: 7px 12px;
+    border-radius: 4px;
+}
+
+.search label:hover {
+  color: rgb(30, 139, 240);
+  border-color: rgb(30, 139, 240);
+}
+
+.search .input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1.5px solid gray;
+  border-radius: 4px;
+}
+
+.search .input:focus {
+  border-color:rgb(30, 139, 240);
+  outline: none;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-bottom: 50px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid rgb(136, 131, 131);
+  text-align:center;
+}
+
+th, .add-btn{
+  background-color: rgb(30, 139, 240);
+  color: white;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: rgb(205, 220, 238);
+}
+
+.div3 input {
+  width: 100%;
+  padding:10px;
+  box-sizing: border-box;
+}
+
+.button{
+  padding:8px;
+    border:1px solid black;
+  border-radius: 6px;
+  
+  font-weight: bold;
+}
+.btn-delete{
+  background-color: rgb(255, 51, 0);
+  color:white;
+}
+.btn-edit{
+  background-color: rgb(202, 216, 13);
+  color:white;
+}
+.btn-update{
+  background-color: rgb(60, 255, 0);
+  color:white;
+}
+
