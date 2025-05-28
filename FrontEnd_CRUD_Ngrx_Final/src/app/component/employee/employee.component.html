@@ -1,0 +1,78 @@
+<div class="search">
+    <label for="search" >Search</label>
+    <input class="input" type="text" (input)="call()" [(ngModel)]="search">
+</div>
+<div class="div2">
+    <table *ngIf="employee$ | async as employee">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th colspan="2">Actions</th>
+            <!-- <th>DELETE</th> -->
+        </tr>
+        <tr *ngFor="let i of employee">
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.emailId}}</td>
+            <td>{{i.phoneNumber}}</td>
+            <td (click)="enable(i)" ><button class="button btn-edit">EDIT</button></td>
+            <td (click)="deleteData(i.id)"><button  class="button btn-delete">DELETE</button></td>
+        </tr>
+    </table>
+
+</div>
+
+<h2 *ngIf="updateData" class="upt">Update the Data</h2>
+<div class="div3" *ngIf="updateData">
+    <table *ngIf="employee$ | async as employee">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td> <input type="number"  [(ngModel)]="newId" ></td>
+            <td> <input type="text" [(ngModel)]="newName">
+            </td>
+            <td> <input type="text" [(ngModel)]="newEmail">
+            </td>
+            <td><input type="number" [(ngModel)]="newPhoneNo">
+            </td>
+            <td (click)="update()" ><button class="button btn-update">Update</button></td>
+        </tr>
+    </table>
+
+</div>
+
+<div>
+   <button *ngIf="!addData && !updateData" (click)="addEnable()" class="button add-btn">ADD NEW</button>
+</div>
+<h2 *ngIf="addData" class="search">Add the Data</h2>
+<div class="div3" *ngIf="addData">
+    <table *ngIf="employee$ | async as employee">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td> <input type="number"  [(ngModel)]="newId" ></td>
+            <td> <input type="text" [(ngModel)]="newName">
+            </td>
+            <td> <input type="text" [(ngModel)]="newEmail">
+            </td>
+            <td><input type="number" [(ngModel)]="newPhoneNo">
+            </td>
+            <td (click)="add()"  ><button class="button btn-update">Save</button></td>
+        </tr>
+    </table>
+</div>
+<div class="search" *ngIf="addFailed">
+    <h2 style="color:red">Enter all the fields Correctly!</h2>
+</div>
