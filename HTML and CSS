@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top left, rgb(23, 196, 23), yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background-color: rgb(4, 95, 4);
+      color: black;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 20px;
+      gap: 30px;
+      width: 100%;
+    }
+
+    .a {
+      background-color: white;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .b {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 12px;
+      border: 1px solid gray;
+      font-size: 16px;
+    }
+
+    input:focus {
+      border-color: black;
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      background-color: green;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    #c {
+      width: 40px;
+      height: 40px;
+      background-color: green;
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      margin: 20px auto;
+      cursor: grab;
+    }
+
+    #d {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid black;
+      text-align: center;
+      height: 100px;
+      width: 100%;
+      font-size: 16px;
+      color: black;
+      background-color: lightgray;
+    }
+
+    #e {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #e audio,
+    #e video,
+    #e iframe {
+      width: 100%;
+    }
+
+    @media (max-width: 500px) {
+      .a {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Welcome to the Login Page</h1>
+  </header>
+
+  <main>
+    <div class="a">
+      <h2>Login</h2>
+      <div class="b">
+        <input type="text" placeholder="Username" id="f" />
+        <input type="password" placeholder="Password" />
+        <button onclick="storeUser()">Login</button>
+      </div>
+    </div>
+
+    <div>
+      <div id="c" draggable="true" ondragstart="drag(event)">Drag</div>
+      <div id="d" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Drop the green box here
+      </div>
+    </div>
+
+    <div id="e">
+      <audio controls>
+        <source src="welcome.mp3" type="audio/mpeg" />
+      </audio>
+
+      <video controls>
+        <source src="login-instructions.mp4" type="video/mp4" />
+      </video>
+
+      </div>
+  </main>
+
+  <footer>
+    <p>Mphasis</p>
+  </footer>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
+    function storeUser() {
+      const username = document.getElementById("f").value;
+      localStorage.setItem("savedUser", username);
+      alert("Username stored: " + username);
+    }
+  </script>
+
+</body>
+</html>
