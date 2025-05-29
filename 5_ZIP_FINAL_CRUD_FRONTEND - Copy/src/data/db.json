@@ -1,0 +1,22 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "arun",
+      "emailId": "arunkarthikk364@gmail.com",
+      "phoneNumber": 87576465367
+    },
+    {
+      "id": "2",
+      "name": "arunkumar",
+      "emailId": "4127898789",
+      "phoneNumber": 98417987987789800
+    },
+    {
+      "id": "24",
+      "name": "arunkumar",
+      "emailId": "4127898789",
+      "phoneNumber": 98417987987789800
+    }
+  ]
+}
