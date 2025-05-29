@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Contact Form</title>
+  <style>
+    /* Reset & base styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #444;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1.8px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #0066ff;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #0066ff;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #004bb5;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    #result.error {
+      background-color: #ffd6d6; /* light red */
+      color: #b30000;            /* dark red */
+      border: 1px solid #b30000;
+    }
+    #result.success {
+      background-color: #d6ffd6; /* light green */
+      color: #007300;            /* dark green */
+      border: 1px solid #007300;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form id="formA" novalidate>
+      <label for="a">Name</label>
+      <input type="text" id="a" name="a" placeholder="Your full name" required />
+
+      <label for="b">Email</label>
+      <input type="email" id="b" name="b" placeholder="example@mail.com" required />
+
+      <label for="c">Message</label>
+      <textarea id="c" name="c" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Select DOM elements with altered variable names
+    const formA = document.getElementById('formA');
+    const result = document.getElementById('result');
+
+    // Email validation function
+    function checkEmail(email) {
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(email);
+    }
+
+    formA.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous messages and classes
+      result.textContent = '';
+      result.className = '';
+
+      // Get values using altered names
+      const a = formA.elements['a'].value.trim(); // name
+      const b = formA.elements['b'].value.trim(); // email
+      const c = formA.elements['c'].value.trim(); // message
+
+      // Validation checks
+      if (!a) {
+        showError('Please enter your name.');
+        return;
+      }
+      if (!b) {
+        showError('Please enter your email.');
+        return;
+      }
+      if (!checkEmail(b)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+      if (!c) {
+        showError('Please enter your message.');
+        return;
+      }
+
+      showSuccess(`Thank you, <strong>${a}</strong>! Your message has been sent successfully.`);
+
+      formA.reset();
+    });
+
+    function showError(msg) {
+      result.textContent = msg;
+      result.classList.add('error');
+    }
+
+    function showSuccess(msg) {
+      result.innerHTML = msg;
+      result.classList.add('success');
+    }
+  </script>
+
+</body>
+</html>
