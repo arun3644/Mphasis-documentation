@@ -1,0 +1,34 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "arun",
+      "emailId": "arun@gmail.com",
+      "phoneNumber": 4879843928
+    },
+    {
+      "id": "2",
+      "name": "naveen",
+      "emailId": "naveen@gmail.com",
+      "phoneNumber": 9432345567
+    },
+    {
+      "id": "3",
+      "name": "akilesh",
+      "emailId": "akilesh@gmail.com",
+      "phoneNumber": 782345789
+    },
+    {
+      "id": "4",
+      "name": "lokesh",
+      "emailId": "lokesh@gmail.com",
+      "phoneNumber": 9872345609
+    },
+    {
+      "id": "5",
+      "name": "arunkumar",
+      "emailId": "a123@gmail.com",
+      "phoneNumber": 3456782345
+    }
+  ]
+}
